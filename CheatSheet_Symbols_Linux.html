@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Compose-шпаргалка (AltLinux Simply, Compose = правый Alt)</title>
+<style>
+  @page {
+    size: A4;
+    margin: 12mm 10mm 12mm 10mm;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-size: 9.2pt;
+    line-height: 1.25;
+    color: #111;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    font-size: 16pt;
+    margin: 0 0 4px 0;
+    border-bottom: 2px solid #333;
+    padding-bottom: 3px;
+  }
+  h2 {
+    font-size: 11.5pt;
+    margin: 10px 0 4px 0;
+    padding: 3px 5px;
+    background: #e8e8e8;
+    border-left: 4px solid #444;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 10pt;
+    margin: 7px 0 3px 0;
+    color: #222;
+    page-break-after: avoid;
+  }
+  p.note {
+    font-size: 8.5pt;
+    color: #444;
+    margin: 2px 0 8px 0;
+  }
+  .cols {
+    column-count: 2;
+    column-gap: 8mm;
+    column-rule: 1px solid #ccc;
+  }
+  .cols-3 {
+    column-count: 3;
+    column-gap: 6mm;
+    column-rule: 1px solid #ddd;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 6px 0;
+    font-size: 8.8pt;
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 1.5px 4px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #f0f0f0;
+    font-weight: bold;
+  }
+  td.sym {
+    font-family: "DejaVu Sans", "Liberation Serif", serif;
+    font-size: 11pt;
+    text-align: center;
+    white-space: nowrap;
+    width: 1.2em;
+  }
+  code, .kbd {
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    font-size: 8.4pt;
+    background: #f4f4f4;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  .toc {
+    border: 1px solid #999;
+    background: #fafafa;
+    padding: 6px 10px;
+    margin: 6px 0 10px 0;
+    font-size: 8.6pt;
+    column-count: 3;
+    column-gap: 6mm;
+  }
+  .toc a {
+    color: #0033aa;
+    text-decoration: none;
+  }
+  .toc a:hover { text-decoration: underline; }
+  .toc div { margin: 0 0 1px 0; break-inside: avoid; }
+  .legend {
+    background: #fffbe6;
+    border: 1px solid #e0c860;
+    padding: 5px 8px;
+    margin: 6px 0 10px 0;
+    font-size: 8.8pt;
+  }
+  .legend b { color: #7a5c00; }
+  .pagebreak { page-break-before: always; }
+  .nowrap { white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<h1>Compose-шпаргалка</h1>
+<p class="note">
+AltLinux Simply <b>Compose = правый Alt</b> · Нажимай последовательно: <span class="kbd">RAlt</span>, затем первый символ, затем второй.
+Пример: <span class="kbd">RAlt</span> <span class="kbd">'</span> <span class="kbd">e</span> → <b>é</b>.
+</p>
+
+<div class="legend">
+<b>Обозначения:</b> <span class="kbd">RAlt</span> — правый Alt (Compose).
+В таблицах ниже столбец «Сочетание» означает последовательность после <span class="kbd">RAlt</span>.
+Например, строка «<span class="kbd">o</span> <span class="kbd">o</span> → °» означает: <span class="kbd">RAlt</span>, <span class="kbd">o</span>, <span class="kbd">o</span>.
+</div>
+
+<div class="toc">
+  <div><a href="#s1">1. Базовые знаки</a></div>
+  <div><a href="#s2">2. Кавычки и тире</a></div>
+  <div><a href="#s3">3. Валюты</a></div>
+  <div><a href="#s4">4. © ® ™</a></div>
+  <div><a href="#s5">5. Лигатуры</a></div>
+  <div><a href="#s6">6. Математика и стрелки</a></div>
+  <div><a href="#s7">7. Музыка</a></div>
+  <div><a href="#s8">8. Разные символы</a></div>
+  <div><a href="#s9">9. Латинские диакритики</a></div>
+  <div><a href="#s10">10. Греческий</a></div>
+  <div><a href="#s11">11. Кириллица</a></div>
+  <div><a href="#s12">12. Хирагана/катакана</a></div>
+  <div><a href="#s13">13. Обведённые символы</a></div>
+  <div><a href="#s14">14. Дроби</a></div>
+  <div><a href="#s15">15. Индексы</a></div>
+  <div><a href="#s16">16. Bépo / AltLinux</a></div>
+  <div><a href="#s17">17. Мат. буквы</a></div>
+  <div><a href="#s18">18. Прочее</a></div>
+  <div><a href="#s19">19. dead_greek</a></div>
+</div>
+
+<h2 id="s1">1. Базовые пробельные и акцентные знаки</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>~ ~</code></td><td class="sym">~</td></tr>
+<tr><td><code>' '</code></td><td class="sym">´</td></tr>
+<tr><td><code>` `</code></td><td class="sym">`</td></tr>
+<tr><td><code>^ ^</code></td><td class="sym">^</td></tr>
+<tr><td><code>o o</code></td><td class="sym">°</td></tr>
+<tr><td><code>* 0</code></td><td class="sym">°</td></tr>
+<tr><td><code>_ _</code></td><td class="sym">¯</td></tr>
+<tr><td><code>( (</code></td><td class="sym">˘</td></tr>
+<tr><td><code>. .</code></td><td class="sym">…</td></tr>
+<tr><td><code>. -</code></td><td class="sym">·</td></tr>
+<tr><td><code>. =</code></td><td class="sym">•</td></tr>
+<tr><td><code>! !</code></td><td class="sym">¡</td></tr>
+<tr><td><code>? ?</code></td><td class="sym">¿</td></tr>
+<tr><td><code>! ?</code></td><td class="sym">‽</td></tr>
+<tr><td><code>? !</code></td><td class="sym">⸘</td></tr>
+<tr><td><code>+ -</code></td><td class="sym">±</td></tr>
+<tr><td><code>- +</code></td><td class="sym">±</td></tr>
+</table>
+</div>
+
+<h2 id="s2">2. Кавычки, тире, многоточие</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>&lt; &lt;</code></td><td class="sym">«</td></tr>
+<tr><td><code>&gt; &gt;</code></td><td class="sym">»</td></tr>
+<tr><td><code>. &lt;</code></td><td class="sym">‹</td></tr>
+<tr><td><code>. &gt;</code></td><td class="sym">›</td></tr>
+<tr><td><code>&lt; '</code></td><td class="sym">‘</td></tr>
+<tr><td><code>' &lt;</code></td><td class="sym">‘</td></tr>
+<tr><td><code>&gt; '</code></td><td class="sym">’</td></tr>
+<tr><td><code>' &gt;</code></td><td class="sym">’</td></tr>
+<tr><td><code>, '</code></td><td class="sym">‚</td></tr>
+<tr><td><code>' ,</code></td><td class="sym">‚</td></tr>
+<tr><td><code>&lt; "</code></td><td class="sym">“</td></tr>
+<tr><td><code>" &lt;</code></td><td class="sym">“</td></tr>
+<tr><td><code>&gt; "</code></td><td class="sym">”</td></tr>
+<tr><td><code>" &gt;</code></td><td class="sym">”</td></tr>
+<tr><td><code>, "</code></td><td class="sym">„</td></tr>
+<tr><td><code>" ,</code></td><td class="sym">„</td></tr>
+<tr><td><code>- - .</code></td><td class="sym">–</td></tr>
+<tr><td><code>- - -</code></td><td class="sym">—</td></tr>
+</table>
+</div>
+
+<h2 id="s3">3. Валюты</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>S |</code></td><td class="sym">$</td></tr>
+<tr><td><code>| S</code></td><td class="sym">$</td></tr>
+<tr><td><code>c |</code></td><td class="sym">¢</td></tr>
+<tr><td><code>| c</code></td><td class="sym">¢</td></tr>
+<tr><td><code>c /</code></td><td class="sym">¢</td></tr>
+<tr><td><code>/ c</code></td><td class="sym">¢</td></tr>
+<tr><td><code>L -</code></td><td class="sym">£</td></tr>
+<tr><td><code>- L</code></td><td class="sym">£</td></tr>
+<tr><td><code>l -</code></td><td class="sym">£</td></tr>
+<tr><td><code>- l</code></td><td class="sym">£</td></tr>
+<tr><td><code>Y =</code></td><td class="sym">¥</td></tr>
+<tr><td><code>= Y</code></td><td class="sym">¥</td></tr>
+<tr><td><code>y =</code></td><td class="sym">¥</td></tr>
+<tr><td><code>= y</code></td><td class="sym">¥</td></tr>
+<tr><td><code>C =</code></td><td class="sym">€</td></tr>
+<tr><td><code>= C</code></td><td class="sym">€</td></tr>
+<tr><td><code>c =</code></td><td class="sym">€</td></tr>
+<tr><td><code>= c</code></td><td class="sym">€</td></tr>
+<tr><td><code>E =</code></td><td class="sym">€</td></tr>
+<tr><td><code>= E</code></td><td class="sym">€</td></tr>
+<tr><td><code>e =</code></td><td class="sym">€</td></tr>
+<tr><td><code>= e</code></td><td class="sym">€</td></tr>
+<tr><td><code>R =</code></td><td class="sym">₹</td></tr>
+<tr><td><code>= R</code></td><td class="sym">₹</td></tr>
+<tr><td><code>r =</code></td><td class="sym">₹</td></tr>
+<tr><td><code>= r</code></td><td class="sym">₹</td></tr>
+<tr><td><code>P =</code></td><td class="sym">₽</td></tr>
+<tr><td><code>= P</code></td><td class="sym">₽</td></tr>
+<tr><td><code>p =</code></td><td class="sym">₽</td></tr>
+<tr><td><code>= p</code></td><td class="sym">₽</td></tr>
+</table>
+</div>
+
+<h2 id="s4">4. © ® ™ и подобные</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>o c</code></td><td class="sym">©</td></tr>
+<tr><td><code>O C</code></td><td class="sym">©</td></tr>
+<tr><td><code>C O</code></td><td class="sym">©</td></tr>
+<tr><td><code>o r</code></td><td class="sym">®</td></tr>
+<tr><td><code>O R</code></td><td class="sym">®</td></tr>
+<tr><td><code>R O</code></td><td class="sym">®</td></tr>
+<tr><td><code>T M</code></td><td class="sym">™</td></tr>
+<tr><td><code>t m</code></td><td class="sym">™</td></tr>
+<tr><td><code>S M</code></td><td class="sym">℠</td></tr>
+<tr><td><code>s m</code></td><td class="sym">℠</td></tr>
+<tr><td><code>( ) )</code></td><td class="sym">🄯</td></tr>
+</table>
+</div>
+
+<h2 id="s5">5. Лигатуры</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>a e</code></td><td class="sym">æ</td></tr>
+<tr><td><code>A E</code></td><td class="sym">Æ</td></tr>
+<tr><td><code>o e</code></td><td class="sym">œ</td></tr>
+<tr><td><code>O E</code></td><td class="sym">Œ</td></tr>
+<tr><td><code>s s</code></td><td class="sym">ß</td></tr>
+<tr><td><code>S S</code></td><td class="sym">ẞ</td></tr>
+<tr><td><code>f f</code></td><td class="sym">ﬀ</td></tr>
+<tr><td><code>f i</code></td><td class="sym">ﬁ</td></tr>
+<tr><td><code>f l</code></td><td class="sym">ﬂ</td></tr>
+<tr><td><code>F i</code></td><td class="sym">ﬃ</td></tr>
+<tr><td><code>F l</code></td><td class="sym">ﬄ</td></tr>
+<tr><td><code>i j</code></td><td class="sym">ĳ</td></tr>
+<tr><td><code>I j</code></td><td class="sym">Ĳ</td></tr>
+<tr><td><code>I J</code></td><td class="sym">Ĳ</td></tr>
+</table>
+</div>
+
+<h2 id="s6">6. Математика и стрелки</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>v /</code></td><td class="sym">√</td></tr>
+<tr><td><code>/ v</code></td><td class="sym">√</td></tr>
+<tr><td><code>8 8</code></td><td class="sym">∞</td></tr>
+<tr><td><code>: .</code></td><td class="sym">∴</td></tr>
+<tr><td><code>. :</code></td><td class="sym">∵</td></tr>
+<tr><td><code>~ ~</code></td><td class="sym">≈</td></tr>
+<tr><td><code>= _</code></td><td class="sym">≡</td></tr>
+<tr><td><code>&lt; =</code></td><td class="sym">≤</td></tr>
+<tr><td><code>&gt; =</code></td><td class="sym">≥</td></tr>
+<tr><td><code>/ =</code></td><td class="sym">≠</td></tr>
+<tr><td><code>= /</code></td><td class="sym">≠</td></tr>
+<tr><td><code>&lt; -</code></td><td class="sym">←</td></tr>
+<tr><td><code>- &gt;</code></td><td class="sym">→</td></tr>
+<tr><td><code>= &lt;</code></td><td class="sym">⇐</td></tr>
+<tr><td><code>= &gt;</code></td><td class="sym">⇒</td></tr>
+<tr><td><code>= ^</code></td><td class="sym">⇑</td></tr>
+<tr><td><code>= v</code></td><td class="sym">⇓</td></tr>
+<tr><td><code>| ^</code></td><td class="sym">↑</td></tr>
+<tr><td><code>^ |</code></td><td class="sym">↑</td></tr>
+<tr><td><code>| v</code></td><td class="sym">↓</td></tr>
+<tr><td><code>v |</code></td><td class="sym">↓</td></tr>
+<tr><td><code>x x</code></td><td class="sym">×</td></tr>
+<tr><td><code>: -</code></td><td class="sym">÷</td></tr>
+<tr><td><code>- :</code></td><td class="sym">÷</td></tr>
+</table>
+</div>
+
+<h2 id="s7">7. Музыкальные символы</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code># q</code></td><td class="sym">♩</td></tr>
+<tr><td><code># e</code></td><td class="sym">♪</td></tr>
+<tr><td><code># E</code></td><td class="sym">♫</td></tr>
+<tr><td><code># S</code></td><td class="sym">♬</td></tr>
+<tr><td><code># b</code></td><td class="sym">♭</td></tr>
+<tr><td><code># f</code></td><td class="sym">♮</td></tr>
+<tr><td><code># #</code></td><td class="sym">♯</td></tr>
+</table>
+</div>
+
+<h2 id="s8">8. Разные полезные символы</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>s o</code></td><td class="sym">§</td></tr>
+<tr><td><code>o s</code></td><td class="sym">§</td></tr>
+<tr><td><code>S O</code></td><td class="sym">§</td></tr>
+<tr><td><code>O S</code></td><td class="sym">§</td></tr>
+<tr><td><code>p !</code></td><td class="sym">¶</td></tr>
+<tr><td><code>P !</code></td><td class="sym">¶</td></tr>
+<tr><td><code>P P</code></td><td class="sym">¶</td></tr>
+<tr><td><code>o x</code></td><td class="sym">¤</td></tr>
+<tr><td><code>x o</code></td><td class="sym">¤</td></tr>
+<tr><td><code>O X</code></td><td class="sym">¤</td></tr>
+<tr><td><code>X O</code></td><td class="sym">¤</td></tr>
+<tr><td><code>N o</code></td><td class="sym">№</td></tr>
+<tr><td><code>N O</code></td><td class="sym">№</td></tr>
+<tr><td><code>&lt; 3</code></td><td class="sym">♥</td></tr>
+<tr><td><code>: )</code></td><td class="sym">☺</td></tr>
+<tr><td><code>: (</code></td><td class="sym">☹</td></tr>
+<tr><td><code>? \</code></td><td class="sym">☭</td></tr>
+<tr><td><code>\ ?</code></td><td class="sym">☭</td></tr>
+<tr><td><code>O Y</code></td><td class="sym">☮</td></tr>
+<tr><td><code>O A</code></td><td class="sym">Ⓐ</td></tr>
+</table>
+</div>
+
+<h2 id="s9">9. Латинские буквы с диакритикой</h2>
+
+<h3>Острый акцент <code>'</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>' A</code></td><td class="sym">Á</td></tr>
+<tr><td><code>' a</code></td><td class="sym">á</td></tr>
+<tr><td><code>' E</code></td><td class="sym">É</td></tr>
+<tr><td><code>' e</code></td><td class="sym">é</td></tr>
+<tr><td><code>' I</code></td><td class="sym">Í</td></tr>
+<tr><td><code>' i</code></td><td class="sym">í</td></tr>
+<tr><td><code>' O</code></td><td class="sym">Ó</td></tr>
+<tr><td><code>' o</code></td><td class="sym">ó</td></tr>
+<tr><td><code>' U</code></td><td class="sym">Ú</td></tr>
+<tr><td><code>' u</code></td><td class="sym">ú</td></tr>
+<tr><td><code>' Y</code></td><td class="sym">Ý</td></tr>
+<tr><td><code>' y</code></td><td class="sym">ý</td></tr>
+</table>
+</div>
+
+<h3>Тяжёлый акцент <code>`</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>` A</code></td><td class="sym">À</td></tr>
+<tr><td><code>` a</code></td><td class="sym">à</td></tr>
+<tr><td><code>` E</code></td><td class="sym">È</td></tr>
+<tr><td><code>` e</code></td><td class="sym">è</td></tr>
+<tr><td><code>` I</code></td><td class="sym">Ì</td></tr>
+<tr><td><code>` i</code></td><td class="sym">ì</td></tr>
+<tr><td><code>` O</code></td><td class="sym">Ò</td></tr>
+<tr><td><code>` o</code></td><td class="sym">ò</td></tr>
+<tr><td><code>` U</code></td><td class="sym">Ù</td></tr>
+<tr><td><code>` u</code></td><td class="sym">ù</td></tr>
+</table>
+</div>
+
+<h3>Циркумфлекс <code>^</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>^ A</code></td><td class="sym">Â</td></tr>
+<tr><td><code>^ a</code></td><td class="sym">â</td></tr>
+<tr><td><code>^ E</code></td><td class="sym">Ê</td></tr>
+<tr><td><code>^ e</code></td><td class="sym">ê</td></tr>
+<tr><td><code>^ I</code></td><td class="sym">Î</td></tr>
+<tr><td><code>^ i</code></td><td class="sym">î</td></tr>
+<tr><td><code>^ O</code></td><td class="sym">Ô</td></tr>
+<tr><td><code>^ o</code></td><td class="sym">ô</td></tr>
+<tr><td><code>^ U</code></td><td class="sym">Û</td></tr>
+<tr><td><code>^ u</code></td><td class="sym">û</td></tr>
+</table>
+</div>
+
+<h3>Тильда <code>~</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>~ A</code></td><td class="sym">Ã</td></tr>
+<tr><td><code>~ a</code></td><td class="sym">ã</td></tr>
+<tr><td><code>~ N</code></td><td class="sym">Ñ</td></tr>
+<tr><td><code>~ n</code></td><td class="sym">ñ</td></tr>
+<tr><td><code>~ O</code></td><td class="sym">Õ</td></tr>
+<tr><td><code>~ o</code></td><td class="sym">õ</td></tr>
+</table>
+</div>
+
+<h3>Диэрезис <code>"</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>" A</code></td><td class="sym">Ä</td></tr>
+<tr><td><code>" a</code></td><td class="sym">ä</td></tr>
+<tr><td><code>" E</code></td><td class="sym">Ë</td></tr>
+<tr><td><code>" e</code></td><td class="sym">ë</td></tr>
+<tr><td><code>" I</code></td><td class="sym">Ï</td></tr>
+<tr><td><code>" i</code></td><td class="sym">ï</td></tr>
+<tr><td><code>" O</code></td><td class="sym">Ö</td></tr>
+<tr><td><code>" o</code></td><td class="sym">ö</td></tr>
+<tr><td><code>" U</code></td><td class="sym">Ü</td></tr>
+<tr><td><code>" u</code></td><td class="sym">ü</td></tr>
+<tr><td><code>" Y</code></td><td class="sym">Ÿ</td></tr>
+<tr><td><code>" y</code></td><td class="sym">ÿ</td></tr>
+</table>
+</div>
+
+<h3>Седилья <code>,</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>, C</code></td><td class="sym">Ç</td></tr>
+<tr><td><code>, c</code></td><td class="sym">ç</td></tr>
+<tr><td><code>, S</code></td><td class="sym">Ş</td></tr>
+<tr><td><code>, s</code></td><td class="sym">ş</td></tr>
+<tr><td><code>, T</code></td><td class="sym">Ţ</td></tr>
+<tr><td><code>, t</code></td><td class="sym">ţ</td></tr>
+</table>
+</div>
+
+<h3>Кружок <code>o</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>o A</code></td><td class="sym">Å</td></tr>
+<tr><td><code>o a</code></td><td class="sym">å</td></tr>
+<tr><td><code>o U</code></td><td class="sym">Ů</td></tr>
+<tr><td><code>o u</code></td><td class="sym">ů</td></tr>
+</table>
+</div>
+
+<h3>Гачек/карно <code>c</code> или <code>v</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>c C</code></td><td class="sym">Č</td></tr>
+<tr><td><code>c c</code></td><td class="sym">č</td></tr>
+<tr><td><code>c S</code></td><td class="sym">Š</td></tr>
+<tr><td><code>c s</code></td><td class="sym">š</td></tr>
+<tr><td><code>c Z</code></td><td class="sym">Ž</td></tr>
+<tr><td><code>c z</code></td><td class="sym">ž</td></tr>
+<tr><td><code>v C</code></td><td class="sym">Č</td></tr>
+<tr><td><code>v c</code></td><td class="sym">č</td></tr>
+<tr><td><code>v S</code></td><td class="sym">Š</td></tr>
+<tr><td><code>v s</code></td><td class="sym">š</td></tr>
+<tr><td><code>v Z</code></td><td class="sym">Ž</td></tr>
+<tr><td><code>v z</code></td><td class="sym">ž</td></tr>
+</table>
+</div>
+
+<h3>Макрон <code>_</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>_ A</code></td><td class="sym">Ā</td></tr>
+<tr><td><code>_ a</code></td><td class="sym">ā</td></tr>
+<tr><td><code>_ E</code></td><td class="sym">Ē</td></tr>
+<tr><td><code>_ e</code></td><td class="sym">ē</td></tr>
+<tr><td><code>_ I</code></td><td class="sym">Ī</td></tr>
+<tr><td><code>_ i</code></td><td class="sym">ī</td></tr>
+<tr><td><code>_ O</code></td><td class="sym">Ō</td></tr>
+<tr><td><code>_ o</code></td><td class="sym">ō</td></tr>
+<tr><td><code>_ U</code></td><td class="sym">Ū</td></tr>
+<tr><td><code>_ u</code></td><td class="sym">ū</td></tr>
+</table>
+</div>
+
+<h3>Огонэк <code>;</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>; A</code></td><td class="sym">Ą</td></tr>
+<tr><td><code>; a</code></td><td class="sym">ą</td></tr>
+<tr><td><code>; E</code></td><td class="sym">Ę</td></tr>
+<tr><td><code>; e</code></td><td class="sym">ę</td></tr>
+<tr><td><code>; I</code></td><td class="sym">Į</td></tr>
+<tr><td><code>; i</code></td><td class="sym">į</td></tr>
+<tr><td><code>; U</code></td><td class="sym">Ų</td></tr>
+<tr><td><code>; u</code></td><td class="sym">ų</td></tr>
+</table>
+</div>
+
+<h3>Перечёркивание <code>/</code></h3>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>/ O</code></td><td class="sym">Ø</td></tr>
+<tr><td><code>/ o</code></td><td class="sym">ø</td></tr>
+<tr><td><code>/ D</code></td><td class="sym">Đ</td></tr>
+<tr><td><code>/ d</code></td><td class="sym">đ</td></tr>
+<tr><td><code>/ H</code></td><td class="sym">Ħ</td></tr>
+<tr><td><code>/ h</code></td><td class="sym">ħ</td></tr>
+<tr><td><code>/ L</code></td><td class="sym">Ł</td></tr>
+<tr><td><code>/ l</code></td><td class="sym">ł</td></tr>
+<tr><td><code>/ T</code></td><td class="sym">Ŧ</td></tr>
+<tr><td><code>/ t</code></td><td class="sym">ŧ</td></tr>
+</table>
+</div>
+
+<h2 id="s10">10. Греческий</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>' Α</code></td><td class="sym">Ά</td></tr>
+<tr><td><code>' α</code></td><td class="sym">ά</td></tr>
+<tr><td><code>' Ε</code></td><td class="sym">Έ</td></tr>
+<tr><td><code>' ε</code></td><td class="sym">έ</td></tr>
+<tr><td><code>' Η</code></td><td class="sym">Ή</td></tr>
+<tr><td><code>' η</code></td><td class="sym">ή</td></tr>
+<tr><td><code>' Ι</code></td><td class="sym">Ί</td></tr>
+<tr><td><code>' ι</code></td><td class="sym">ί</td></tr>
+<tr><td><code>' Ο</code></td><td class="sym">Ό</td></tr>
+<tr><td><code>' ο</code></td><td class="sym">ό</td></tr>
+<tr><td><code>' Υ</code></td><td class="sym">Ύ</td></tr>
+<tr><td><code>' υ</code></td><td class="sym">ύ</td></tr>
+<tr><td><code>' Ω</code></td><td class="sym">Ώ</td></tr>
+<tr><td><code>' ω</code></td><td class="sym">ώ</td></tr>
+<tr><td><code>" Ι</code></td><td class="sym">Ϊ</td></tr>
+<tr><td><code>" ι</code></td><td class="sym">ϊ</td></tr>
+<tr><td><code>" Υ</code></td><td class="sym">Ϋ</td></tr>
+<tr><td><code>" υ</code></td><td class="sym">ϋ</td></tr>
+</table>
+</div>
+
+<h2 id="s11">11. Кириллица</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>" Е</code></td><td class="sym">Ё</td></tr>
+<tr><td><code>" е</code></td><td class="sym">ё</td></tr>
+<tr><td><code>' Г</code></td><td class="sym">Ѓ</td></tr>
+<tr><td><code>' г</code></td><td class="sym">ѓ</td></tr>
+<tr><td><code>' К</code></td><td class="sym">Ќ</td></tr>
+<tr><td><code>' к</code></td><td class="sym">ќ</td></tr>
+<tr><td><code>" І</code></td><td class="sym">Ї</td></tr>
+<tr><td><code>" і</code></td><td class="sym">ї</td></tr>
+<tr><td><code>U Й</code></td><td class="sym">Ў</td></tr>
+<tr><td><code>b Й</code></td><td class="sym">Ў</td></tr>
+<tr><td><code>U й</code></td><td class="sym">ў</td></tr>
+<tr><td><code>b й</code></td><td class="sym">ў</td></tr>
+<tr><td><code>U И</code></td><td class="sym">Й</td></tr>
+<tr><td><code>b И</code></td><td class="sym">Й</td></tr>
+<tr><td><code>U и</code></td><td class="sym">й</td></tr>
+<tr><td><code>b и</code></td><td class="sym">й</td></tr>
+<tr><td><code>" А</code></td><td class="sym">Ӓ</td></tr>
+<tr><td><code>" а</code></td><td class="sym">ӓ</td></tr>
+<tr><td><code>" О</code></td><td class="sym">Ӧ</td></tr>
+<tr><td><code>" о</code></td><td class="sym">ӧ</td></tr>
+<tr><td><code>" У</code></td><td class="sym">Ӱ</td></tr>
+<tr><td><code>" у</code></td><td class="sym">ӱ</td></tr>
+<tr><td><code>= О</code></td><td class="sym">Ő</td></tr>
+<tr><td><code>= о</code></td><td class="sym">ő</td></tr>
+<tr><td><code>= У</code></td><td class="sym">Ű</td></tr>
+<tr><td><code>= у</code></td><td class="sym">ű</td></tr>
+</table>
+</div>
+
+<h2 id="s12">12. Хирагана/катакана (озвончение)</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>゛ か</code></td><td class="sym">が</td></tr>
+<tr><td><code>゛ き</code></td><td class="sym">ぎ</td></tr>
+<tr><td><code>゛ く</code></td><td class="sym">ぐ</td></tr>
+<tr><td><code>゛ け</code></td><td class="sym">げ</td></tr>
+<tr><td><code>゛ こ</code></td><td class="sym">ご</td></tr>
+<tr><td><code>゛ さ</code></td><td class="sym">ざ</td></tr>
+<tr><td><code>゛ し</code></td><td class="sym">じ</td></tr>
+<tr><td><code>゛ す</code></td><td class="sym">ず</td></tr>
+<tr><td><code>゛ せ</code></td><td class="sym">ぜ</td></tr>
+<tr><td><code>゛ そ</code></td><td class="sym">ぞ</td></tr>
+<tr><td><code>゛ た</code></td><td class="sym">だ</td></tr>
+<tr><td><code>゛ ち</code></td><td class="sym">ぢ</td></tr>
+<tr><td><code>゛ つ</code></td><td class="sym">づ</td></tr>
+<tr><td><code>゛ て</code></td><td class="sym">で</td></tr>
+<tr><td><code>゛ と</code></td><td class="sym">ど</td></tr>
+<tr><td><code>゛ は</code></td><td class="sym">ば</td></tr>
+<tr><td><code>゜ は</code></td><td class="sym">ぱ</td></tr>
+<tr><td><code>゛ ひ</code></td><td class="sym">び</td></tr>
+<tr><td><code>゜ ひ</code></td><td class="sym">ぴ</td></tr>
+<tr><td><code>゛ ふ</code></td><td class="sym">ぶ</td></tr>
+<tr><td><code>゜ ふ</code></td><td class="sym">ぷ</td></tr>
+<tr><td><code>゛ へ</code></td><td class="sym">べ</td></tr>
+<tr><td><code>゜ へ</code></td><td class="sym">ぺ</td></tr>
+<tr><td><code>゛ ほ</code></td><td class="sym">ぼ</td></tr>
+<tr><td><code>゜ ほ</code></td><td class="sym">ぽ</td></tr>
+<tr><td><code>゛ う</code></td><td class="sym">ゔ</td></tr>
+</table>
+</div>
+
+<h2 id="s13">13. Обведённые цифры и буквы</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>( 1 )</code></td><td class="sym">①</td></tr>
+<tr><td><code>( 2 )</code></td><td class="sym">②</td></tr>
+<tr><td><code>( 3 )</code></td><td class="sym">③</td></tr>
+<tr><td><code>( 4 )</code></td><td class="sym">④</td></tr>
+<tr><td><code>( 5 )</code></td><td class="sym">⑤</td></tr>
+<tr><td><code>( 6 )</code></td><td class="sym">⑥</td></tr>
+<tr><td><code>( 7 )</code></td><td class="sym">⑦</td></tr>
+<tr><td><code>( 8 )</code></td><td class="sym">⑧</td></tr>
+<tr><td><code>( 9 )</code></td><td class="sym">⑨</td></tr>
+<tr><td><code>( 0 )</code></td><td class="sym">⓪</td></tr>
+<tr><td><code>( A )</code></td><td class="sym">Ⓐ</td></tr>
+<tr><td><code>( B )</code></td><td class="sym">Ⓑ</td></tr>
+<tr><td><code>( C )</code></td><td class="sym">Ⓒ</td></tr>
+<tr><td><code>( a )</code></td><td class="sym">ⓐ</td></tr>
+<tr><td><code>( b )</code></td><td class="sym">ⓑ</td></tr>
+<tr><td><code>( c )</code></td><td class="sym">ⓒ</td></tr>
+</table>
+</div>
+
+<h2 id="s14">14. Дроби</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>1 2</code></td><td class="sym">½</td></tr>
+<tr><td><code>1 4</code></td><td class="sym">¼</td></tr>
+<tr><td><code>3 4</code></td><td class="sym">¾</td></tr>
+<tr><td><code>1 3</code></td><td class="sym">⅓</td></tr>
+<tr><td><code>2 3</code></td><td class="sym">⅔</td></tr>
+<tr><td><code>1 5</code></td><td class="sym">⅕</td></tr>
+<tr><td><code>2 5</code></td><td class="sym">⅖</td></tr>
+<tr><td><code>3 5</code></td><td class="sym">⅗</td></tr>
+<tr><td><code>4 5</code></td><td class="sym">⅘</td></tr>
+<tr><td><code>1 6</code></td><td class="sym">⅙</td></tr>
+<tr><td><code>5 6</code></td><td class="sym">⅚</td></tr>
+<tr><td><code>1 8</code></td><td class="sym">⅛</td></tr>
+<tr><td><code>3 8</code></td><td class="sym">⅜</td></tr>
+<tr><td><code>5 8</code></td><td class="sym">⅝</td></tr>
+<tr><td><code>7 8</code></td><td class="sym">⅞</td></tr>
+</table>
+</div>
+
+<h2 id="s15">15. Верхние и нижние индексы</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>^ 1</code></td><td class="sym">¹</td></tr>
+<tr><td><code>^ 2</code></td><td class="sym">²</td></tr>
+<tr><td><code>^ 3</code></td><td class="sym">³</td></tr>
+<tr><td><code>^ 0</code></td><td class="sym">⁰</td></tr>
+<tr><td><code>^ 4</code></td><td class="sym">⁴</td></tr>
+<tr><td><code>^ 5</code></td><td class="sym">⁵</td></tr>
+<tr><td><code>^ 6</code></td><td class="sym">⁶</td></tr>
+<tr><td><code>^ 7</code></td><td class="sym">⁷</td></tr>
+<tr><td><code>^ 8</code></td><td class="sym">⁸</td></tr>
+<tr><td><code>^ 9</code></td><td class="sym">⁹</td></tr>
+<tr><td><code>^ +</code></td><td class="sym">⁺</td></tr>
+<tr><td><code>^ -</code></td><td class="sym">⁻</td></tr>
+<tr><td><code>^ =</code></td><td class="sym">⁼</td></tr>
+<tr><td><code>^ (</code></td><td class="sym">⁽</td></tr>
+<tr><td><code>^ )</code></td><td class="sym">⁾</td></tr>
+<tr><td><code>_ 0</code></td><td class="sym">₀</td></tr>
+<tr><td><code>_ 1</code></td><td class="sym">₁</td></tr>
+<tr><td><code>_ 2</code></td><td class="sym">₂</td></tr>
+<tr><td><code>_ 3</code></td><td class="sym">₃</td></tr>
+<tr><td><code>_ 4</code></td><td class="sym">₄</td></tr>
+<tr><td><code>_ 5</code></td><td class="sym">₅</td></tr>
+<tr><td><code>_ 6</code></td><td class="sym">₆</td></tr>
+<tr><td><code>_ 7</code></td><td class="sym">₇</td></tr>
+<tr><td><code>_ 8</code></td><td class="sym">₈</td></tr>
+<tr><td><code>_ 9</code></td><td class="sym">₉</td></tr>
+<tr><td><code>_ +</code></td><td class="sym">₊</td></tr>
+<tr><td><code>_ -</code></td><td class="sym">₋</td></tr>
+<tr><td><code>_ =</code></td><td class="sym">₌</td></tr>
+<tr><td><code>_ (</code></td><td class="sym">₍</td></tr>
+<tr><td><code>_ )</code></td><td class="sym">₎</td></tr>
+</table>
+</div>
+
+<h2 id="s16">16. Bépo / AltLinux</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>" j</code></td><td class="sym">ȷ</td></tr>
+<tr><td><code>" L</code></td><td class="sym">Ŀ</td></tr>
+<tr><td><code>" l</code></td><td class="sym">ŀ</td></tr>
+<tr><td><code>o Á</code></td><td class="sym">Ǻ</td></tr>
+<tr><td><code>o á</code></td><td class="sym">ǻ</td></tr>
+<tr><td><code>' V</code></td><td class="sym">Ǘ</td></tr>
+<tr><td><code>' v</code></td><td class="sym">ǘ</td></tr>
+<tr><td><code>c V</code></td><td class="sym">Ǚ</td></tr>
+<tr><td><code>c v</code></td><td class="sym">ǚ</td></tr>
+<tr><td><code>` V</code></td><td class="sym">Ǜ</td></tr>
+<tr><td><code>` v</code></td><td class="sym">ǜ</td></tr>
+<tr><td><code>- E</code></td><td class="sym">Ē</td></tr>
+<tr><td><code>- e</code></td><td class="sym">ē</td></tr>
+<tr><td><code>- O</code></td><td class="sym">Ō</td></tr>
+<tr><td><code>- o</code></td><td class="sym">ō</td></tr>
+<tr><td><code>- U</code></td><td class="sym">Ū</td></tr>
+<tr><td><code>- u</code></td><td class="sym">ū</td></tr>
+</table>
+</div>
+
+<h2 id="s17">17. «Математические» буквы</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>C C</code></td><td class="sym">ℂ</td></tr>
+<tr><td><code>N N</code></td><td class="sym">ℕ</td></tr>
+<tr><td><code>Q Q</code></td><td class="sym">ℚ</td></tr>
+<tr><td><code>R R</code></td><td class="sym">ℝ</td></tr>
+<tr><td><code>Z Z</code></td><td class="sym">ℤ</td></tr>
+</table>
+</div>
+
+<h2 id="s18">18. Прочие полезные мелочи</h2>
+<div class="cols">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>d i</code></td><td class="sym">⌀</td></tr>
+<tr><td><code>/ /</code></td><td class="sym">\</td></tr>
+<tr><td><code>/ &lt;</code></td><td class="sym">\</td></tr>
+<tr><td><code>( -</code></td><td class="sym">{</td></tr>
+<tr><td><code>- (</code></td><td class="sym">{</td></tr>
+<tr><td><code>) -</code></td><td class="sym">}</td></tr>
+<tr><td><code>- )</code></td><td class="sym">}</td></tr>
+<tr><td><code>+ +</code></td><td class="sym">#</td></tr>
+<tr><td><code>A T</code></td><td class="sym">@</td></tr>
+<tr><td><code>( (</code></td><td class="sym">[</td></tr>
+<tr><td><code>) )</code></td><td class="sym">]</td></tr>
+<tr><td><code>/ ^</code></td><td class="sym">|</td></tr>
+<tr><td><code>^ /</code></td><td class="sym">|</td></tr>
+<tr><td><code>V L</code></td><td class="sym">|</td></tr>
+<tr><td><code>L V</code></td><td class="sym">|</td></tr>
+<tr><td><code>v l</code></td><td class="sym">|</td></tr>
+<tr><td><code>l v</code></td><td class="sym">|</td></tr>
+<tr><td><code>L T</code></td><td class="sym">&lt;</td></tr>
+<tr><td><code>l t</code></td><td class="sym">&lt;</td></tr>
+<tr><td><code>G T</code></td><td class="sym">&gt;</td></tr>
+<tr><td><code>g t</code></td><td class="sym">&gt;</td></tr>
+<tr><td><code>space space</code></td><td class="sym">(nbsp)</td></tr>
+<tr><td><code>space .</code></td><td class="sym">(punct)</td></tr>
+</table>
+</div>
+
+<h2 id="s19">19. Греческий через <code>dead_greek</code></h2>
+<p class="note">Если у тебя назначена клавиша <code>dead_greek</code> (часто это Compose + <code>g</code> или отдельная клавиша), работают такие сочетания:</p>
+<div class="cols-3">
+<table>
+<tr><th>Сочетание</th><th>Символ</th></tr>
+<tr><td><code>g A</code></td><td class="sym">Α</td></tr>
+<tr><td><code>g a</code></td><td class="sym">α</td></tr>
+<tr><td><code>g B</code></td><td class="sym">Β</td></tr>
+<tr><td><code>g b</code></td><td class="sym">β</td></tr>
+<tr><td><code>g D</code></td><td class="sym">Δ</td></tr>
+<tr><td><code>g d</code></td><td class="sym">δ</td></tr>
+<tr><td><code>g E</code></td><td class="sym">Ε</td></tr>
+<tr><td><code>g e</code></td><td class="sym">ε</td></tr>
+<tr><td><code>g F</code></td><td class="sym">Φ</td></tr>
+<tr><td><code>g f</code></td><td class="sym">φ</td></tr>
+<tr><td><code>g G</code></td><td class="sym">Γ</td></tr>
+<tr><td><code>g g</code></td><td class="sym">γ</td></tr>
+<tr><td><code>g H</code></td><td class="sym">Η</td></tr>
+<tr><td><code>g h</code></td><td class="sym">η</td></tr>
+<tr><td><code>g I</code></td><td class="sym">Ι</td></tr>
+<tr><td><code>g i</code></td><td class="sym">ι</td></tr>
+<tr><td><code>g J</code></td><td class="sym">Θ</td></tr>
+<tr><td><code>g j</code></td><td class="sym">θ</td></tr>
+<tr><td><code>g K</code></td><td class="sym">Κ</td></tr>
+<tr><td><code>g k</code></td><td class="sym">κ</td></tr>
+<tr><td><code>g L</code></td><td class="sym">Λ</td></tr>
+<tr><td><code>g l</code></td><td class="sym">λ</td></tr>
+<tr><td><code>g M</code></td><td class="sym">Μ</td></tr>
+<tr><td><code>g m</code></td><td class="sym">μ</td></tr>
+<tr><td><code>g N</code></td><td class="sym">Ν</td></tr>
+<tr><td><code>g n</code></td><td class="sym">ν</td></tr>
+<tr><td><code>g O</code></td><td class="sym">Ο</td></tr>
+<tr><td><code>g o</code></td><td class="sym">ο</td></tr>
+<tr><td><code>g P</code></td><td class="sym">Π</td></tr>
+<tr><td><code>g p</code></td><td class="sym">π</td></tr>
+<tr><td><code>g Q</code></td><td class="sym">Χ</td></tr>
+<tr><td><code>g q</code></td><td class="sym">χ</td></tr>
+<tr><td><code>g R</code></td><td class="sym">Ρ</td></tr>
+<tr><td><code>g r</code></td><td class="sym">ρ</td></tr>
+<tr><td><code>g S</code></td><td class="sym">Σ</td></tr>
+<tr><td><code>g s</code></td><td class="sym">σ</td></tr>
+<tr><td><code>g T</code></td><td class="sym">Τ</td></tr>
+<tr><td><code>g t</code></td><td class="sym">τ</td></tr>
+<tr><td><code>g U</code></td><td class="sym">Υ</td></tr>
+<tr><td><code>g u</code></td><td class="sym">υ</td></tr>
+<tr><td><code>g W</code></td><td class="sym">Ω</td></tr>
+<tr><td><code>g w</code></td><td class="sym">ω</td></tr>
+<tr><td><code>g X</code></td><td class="sym">Ξ</td></tr>
+<tr><td><code>g x</code></td><td class="sym">ξ</td></tr>
+<tr><td><code>g Y</code></td><td class="sym">Ψ</td></tr>
+<tr><td><code>g y</code></td><td class="sym">ψ</td></tr>
+<tr><td><code>g Z</code></td><td class="sym">Ζ</td></tr>
+<tr><td><code>g z</code></td><td class="sym">ζ</td></tr>
+</table>
+</div>
+
+<p class="note" style="margin-top:10px;">
+</body>
+</html>
